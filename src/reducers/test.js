@@ -32,4 +32,30 @@ describe("Reducer", () => {
       expect(reducer(undefined, action)).toEqual(expectedState);
     });
   });
+
+  describe("Delete todo", () => {
+    it("Should return the correct state", () => {
+      // mock/setup the starting state to test the reducer with
+      const startingState = {
+        todos: [
+          {
+            id: 1,
+            text: todoText
+          }
+        ]
+      };
+      // mock/setup the starting action to test the reducer with
+      const action = {
+        type: types.DELETE_TODO,
+        id: 1
+      };
+      // define the state we expect the reducer to output
+      const expectedState = {
+        todos: []
+      };
+      // expect that given 'action' and a startingState as an arg
+      // the reducer outputs an expected state
+      expect(reducer(startingState, action)).toEqual(expectedState);
+    });
+  });
 });
