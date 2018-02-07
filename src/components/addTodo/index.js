@@ -7,8 +7,8 @@ const AddTodo = ({ submitTodo }) => {
   return (
     <div>
       <form
-        onSubmit={e => {
-          e.preventDefault();
+        onSubmit={event => {
+          event.preventDefault();
           submitTodo(input.value);
           input.value = "";
         }}
