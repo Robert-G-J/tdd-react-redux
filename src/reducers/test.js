@@ -25,7 +25,8 @@ describe("Reducer", () => {
             id: 1,
             text: todoText
           }
-        ]
+        ],
+        deletedTodos: []
       };
       // expect that given 'action' and no initialState as an arg
       // the reducer outputs an expected state
@@ -42,7 +43,8 @@ describe("Reducer", () => {
             id: 1,
             text: todoText
           }
-        ]
+        ],
+        deletedTodos: []
       };
       // mock/setup the starting action to test the reducer with
       const action = {
@@ -51,7 +53,13 @@ describe("Reducer", () => {
       };
       // define the state we expect the reducer to output
       const expectedState = {
-        todos: []
+        todos: [],
+        deletedTodos: [
+          {
+            id: 1,
+            text: todoText
+          }
+        ]
       };
       // expect that given 'action' and a startingState as an arg
       // the reducer outputs an expected state

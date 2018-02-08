@@ -1,7 +1,8 @@
 import types from "../constants/";
 
 export const initialState = {
-  todos: []
+  todos: [],
+  deletedTodos: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -21,7 +22,11 @@ export const reducer = (state = initialState, action) => {
     case types.DELETE_TODO:
       return {
         ...state,
-        todos: [...state.todos.filter(todo => todo.id !== action.id)]
+        todos: state.todos.filter(todo => todo.id !== action.id),
+        deletedTodos: [
+          ...state.deletedTodos,
+          ...state.todos.filter(todo => todo.id === action.id)
+        ]
       };
 
     default:
