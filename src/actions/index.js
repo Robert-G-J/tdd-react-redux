@@ -15,9 +15,17 @@ const actions = {
       text
     };
   },
+
   deleteTodo(id) {
     return {
       type: types.DELETE_TODO,
+      id: id
+    };
+  },
+
+  undeleteTodo(id) {
+    return {
+      type: types.UNDELETE_TODO,
       id: id
     };
   }
