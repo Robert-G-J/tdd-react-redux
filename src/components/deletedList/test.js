@@ -28,4 +28,10 @@ describe("DeletedList component", () => {
       props.deletedTodos[0].text
     );
   });
+
+  it("Should call the undeleteTodo fn when 👆 button is clicked", () => {
+    expect(undeleteMock.mock.calls.length).toEqual(0);
+    component.find(".deleted-todo-undelete").simulate("click");
+    expect(undeleteMock.mock.calls.length).toEqual(1);
+  });
 });

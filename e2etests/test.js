@@ -35,13 +35,14 @@ describe("TodoList App", () => {
     browser.element(".todo-input").setValue(todoText);
     browser.click(".todo-submit");
     browser.click(".todo-delete");
-    const actual = browser.element(".todo-text");
+    const actual = browser.element(".deleted-todo-text").getText();
+    console.log(actual);
 
-    expect(actual.state).to.equal("failure");
+    expect(actual).to.equal(todoText);
 
-    browser.click(".todo-undelete");
+    browser.click(".deleted-todo-undelete");
     const restoredTodo = browser.element(".todo-text").getText();
 
-    expect(restoredTodo.state).to.equal(todoText);
+    expect(restoredTodo).to.equal(todoText);
   });
 });

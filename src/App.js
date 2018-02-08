@@ -50,6 +50,10 @@ const mapDispatchToProps = dispatch => ({
 
   deleteTodo: id => {
     dispatch(actions.deleteTodo(id));
+  },
+
+  undeleteTodo: id => {
+    dispatch(actions.undeleteTodo(id));
   }
 });
 
