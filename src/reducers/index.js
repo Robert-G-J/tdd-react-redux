@@ -29,6 +29,18 @@ export const reducer = (state = initialState, action) => {
         ]
       };
 
+    case types.UNDELETE_TODO:
+      return {
+        ...state,
+        todos: [
+          ...state.todos,
+          ...state.deletedTodos.filter(todo => todo.id === action.id)
+        ],
+        deletedTodos: [
+          ...state.deletedTodos.filter(todo => todo.id !== action.id)
+        ]
+      };
+
     default:
       return state;
   }

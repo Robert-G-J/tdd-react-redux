@@ -66,4 +66,35 @@ describe("Reducer", () => {
       expect(reducer(startingState, action)).toEqual(expectedState);
     });
   });
+
+  describe("Undelete todo", () => {
+    it("Should return the correct state", () => {
+      const startingState = {
+        todos: [],
+        deletedTodos: [
+          {
+            id: 1,
+            text: todoText
+          }
+        ]
+      };
+
+      const action = {
+        type: types.UNDELETE_TODO,
+        id: 1
+      };
+
+      const expectedState = {
+        todos: [
+          {
+            id: 1,
+            text: todoText
+          }
+        ],
+        deletedTodos: []
+      };
+
+      expect(reducer(startingState, action)).toEqual(expectedState);
+    });
+  });
 });
