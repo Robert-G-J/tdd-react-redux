@@ -28,4 +28,20 @@ describe("TodoList App", () => {
 
     expect(actual.state).to.equal("failure");
   });
+
+  it("Should allow me to undelete a Todo", () => {
+    const todoText = "Get better at stuff";
+    browser.url("http://localhost:3000/");
+    browser.element(".todo-input").setValue(todoText);
+    browser.click(".todo-submit");
+    browser.click(".todo-delete");
+    const actual = browser.element(".todo-text");
+
+    expect(actual.state).to.equal("failure");
+
+    browser.click(".todo-undelete");
+    const restoredTodo = browser.element(".todo-text").getText();
+
+    expect(restoredTodo.state).to.equal(todoText);
+  });
 });
